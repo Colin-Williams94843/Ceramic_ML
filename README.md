@@ -1,32 +1,41 @@
-# Ceramic_ML
-Codes and Data for 2025 Paper on Using Machine Learning to Classify Complex Ceramic AM Samples
 
-Here are the Python scripts used to generate the results in the 2025 paper:
+# Codes and Data for 2025 Paper on Using Machine Learning to Classify Complex Ceramic AM Samples
 
-(insert citation here once published)
+This repository contains the Python scripts used to generate the results in the 2025 paper on using machine learning to classify complex ceramic additive manufacturing (AM) samples.
 
-"RF_OneType.py" allows for looking at the classification of only simulated/experimental data.
+**Citation:**  
+*(Insert citation here once published)*
 
-  "cutoff" is the first n modes that are excluded from analysis (default = 0)
+## Scripts
 
-  "test_size" is the % of data used in testing, with the remaining used for training (default = 0.95)
+### 1. **RF_OneType.py**
+   This script allows for classification of data consisting only of simulated or experimental data.
 
-  "iterations" is the number of random seeds/splits to shuffle the data (default = 101)
+   - **`--cutoff`**: Exclude the first `n` features from the analysis (default: `0`).
+   - **`--test_size`**: The percentage of data used for testing. The remaining data is used for training (default: `0.95`).
+   - **`--iterations`**: Number of random seeds/splits to shuffle the data for testing stability (default: `101`).
 
-Example implementation:
+   #### Example Usage:
+   ```bash
+   python RF_OneType.py --path "/your/data/path" --features_file "Experiments_65_99TallestPeaks.txt" --labels_file "Experiments_65_Labels.txt" --cutoff 0 --test_size 0.2 --iterations 5
+   ```
 
-python RF_OneType.py \
-    --path "/your/data/path" \
-    --features_file "Experiments_65_99TallestPeaks.txt" \
-    --labels_file "Experiments_65_Labels.txt" \
-    --cutoff 0 \
-    --test_size 0.2 \
-    --iterations 5
+---
 
-"RF_Transfer.py" is the script used during transfer learning, where all simulations are used in training plus a small amount of experimental data, for testing on remaining unseen experiments.
+### 2. **RF_Transfer.py**
+   This script is used during transfer learning, where simulations are used in training, alongside a small portion of experimental data, to test on remaining unseen experimental data.
 
-Example implementation:
+   - **`--cutoff`**: Exclude the first `n` features from the analysis (default: `30`).
+   - **`--iterations`**: Number of random seeds/splits to shuffle the data for testing stability (default: `101`).
+   - **`--exp_train_pct`**: Percentage of total experimental data to be included in training, along with all simulations (default: `0.04`).
 
-python RF_Transfer.py --path "/your/data/path" --cutoff 30 --iterations 101 --exp_train_pct 0.05
+   #### Example Usage:
+   ```bash
+   python RF_Transfer.py --path "/your/data/path" --cutoff 30 --iterations 101 --exp_train_pct 0.05
+   ```
 
-  "exp_train_pct" is the percentage of total experimental data to be shared in training along with all the simulations (default = 0.04)
+---
+
+## License
+
+This project is licensed under the MIT License.
