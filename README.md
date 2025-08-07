@@ -17,7 +17,7 @@ This repository contains the Python scripts used to generate the results in the 
 
    #### Example Usage:
    ```bash
-   python RF_OneType.py --path "/your/data/path" --features_file "Experiments_65_99TallestPeaks.txt" --labels_file "Experiments_65_Labels.txt" --cutoff 0 --test_size 0.2 --iterations 5
+   python RF_OneType.py --path "/your/data/path" --features_file "Experiments_13_99TallestPeaks.txt" --labels_file "Experiments_13_Labels.txt" --cutoff 0 --test_size 0.2 --iterations 5
    ```
 
 ---
