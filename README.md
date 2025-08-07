@@ -22,16 +22,17 @@ This repository contains the Python scripts used to generate the results in the 
 
 ---
 
-### 2. **RF_Transfer.py**
-   This script is used during transfer learning, where simulations are used in training, alongside a small portion of experimental data, to test on remaining unseen experimental data.
+### 2. **RF_Cutoff_Range.py**
+   This script is used when combining synthetic and experimental data for Random Forest. Simulations are used in training, alongside a small portion of experimental data, to test on remaining unseen experimental data.
 
-   - **`--cutoff`**: Exclude the first `n` features from the analysis (default: `30`).
+   - **`--feature_start`**: Specify the first of the 99 total features to include, so that all lower features are excluded (default: `0`).
+   - **`--feature_end`**: Specify the upper-bound of the 99 total features to include in the analysis (default: `none`).
    - **`--iterations`**: Number of random seeds/splits to shuffle the data for testing stability (default: `101`).
    - **`--exp_train_pct`**: Percentage of total experimental data to be included in training, along with all simulations (default: `0.04`).
 
    #### Example Usage:
    ```bash
-   python RF_Transfer.py --path "/your/data/path" --cutoff 30 --iterations 101 --exp_train_pct 0.05
+   python3 RF_Cutoff_Range.py --path "/your/data/path" --feature_start 65 --feature_end 85 --iterations 101 --exp_train_pct 0.25
    ```
 
 ---
